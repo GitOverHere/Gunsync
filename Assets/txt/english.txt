@@ -1,0 +1,31 @@
+{
+"Mods": {
+"easy": "Bigger circles and slower targets!",
+"nofail": "You cannot fail, no matter what!",
+"half": "Half the speed! 2 times easier!",
+"hardrock": "Smaller targets for a bigger challenge!",
+"suddendeath": "Miss a note and you fail!",
+"doubletime": "2 times the speed!",
+"nightcore" : "Increases the pitch by 200%, which basically turns people into chipmunks.",
+"hidden": "Hides the targets when you need to shoot them.",
+"flashlight": "Hides the targets when you need to shoot them.",
+"relax": "Why pull the trigger when I can do it for you?",
+"auto": "Just play the game for me.",
+"spinner": "I will complete all the spinners for you."
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
