@@ -26,6 +26,7 @@ public class Beatmap : MonoBehaviour
 	public void Select() {
 		//Directory.GetDirectories(beatmap_dir, "*", SearchOption.TopDirectoryOnly)[0];
 		//gameObject.GetComponent<RectTransform>().gameObjecgameObject.GetComponent<RectTransform>().name
+		Debug.Log(gameObject.transform.GetSiblingIndex());
 		music.LoadSong(gameObject.transform.GetSiblingIndex());
 		
 	}

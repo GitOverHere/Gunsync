@@ -32,6 +32,15 @@ public class SongSelect : MonoBehaviour
 	public void AddBeatmaps(){
 		b = beatmap.GetComponent<RectTransform>();
 		dir = new List<string>(Directory.GetDirectories(beatmap_dir, "*", SearchOption.TopDirectoryOnly));
+		Debug.Log(Path.GetFullPath(beatmap_dir));
+		/* Deactivated Code
+		
+		for(int ReplacementIndex=0; ReplacementIndex < beatmap_count; ReplacementIndex++){
+		  dir[ReplacementIndex].Replace("\\", "/");
+			
+		}
+		*/
+		
 		float offset =0;
 		
 		beatmap_count = dir.Count;
@@ -82,6 +91,12 @@ public class SongSelect : MonoBehaviour
 	}
 	
     void Start(){
+		/*
+		string[] bruh = Directory.GetDirectories(".","*",SearchOption.TopDirectoryOnly);
+		foreach(string s in bruh){
+			Debug.Log(s);
+		}
+		*/
 	AddBeatmaps();
 	back.AddComponent<EventTrigger>();
 	EventTrigger.Entry back_hover = new EventTrigger.Entry();

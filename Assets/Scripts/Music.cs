@@ -13,6 +13,8 @@ using UnityEngine.Audio;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
 using Random = System.Random;
+using System.Web;
+
 
 public class Music : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class Music : MonoBehaviour
 	
 async Task<AudioClip> LoadClip(string path){
      AudioClip clip = null;
+	 //path.Replace("\\", "/");
+	 //string abs =  new Uri(path).AbsoluteUri;
+	 Debug.Log("Attempting to load: "+ path);
      using (UnityWebRequest uwr = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.WAV))
      {
          uwr.SendWebRequest();
@@ -74,7 +79,7 @@ async Task<AudioClip> LoadClip(string path){
 		Random r = new Random();
 		index = r.Next(0,SongSelect.beatmap_count);
 			PlayerPrefs.SetString("beatmap",SongSelect.dir[index]);
-			music.clip = await LoadClip(Application.dataPath+"/"+PlayerPrefs.GetString("beatmap")+"/song.wav");
+			music.clip = await LoadClip(PlayerPrefs.GetString("beatmap")+"/song.wav");
 		Play();
 	}
 	
@@ -82,7 +87,7 @@ async Task<AudioClip> LoadClip(string path){
 		Stop();
 		index += 1;
 		PlayerPrefs.SetString("beatmap",SongSelect.dir[index]);
-			music.clip = await LoadClip(Application.dataPath+"/"+PlayerPrefs.GetString("beatmap")+"/song.wav");
+			music.clip = await LoadClip(PlayerPrefs.GetString("beatmap")+"/song.wav");
 			Play();
 	}
 	
@@ -123,9 +128,16 @@ async Task<AudioClip> LoadClip(string path){
 	async public void LoadSong(int i){
 		Stop();
 		index = i;
-		PlayerPrefs.SetString("beatmap",SongSelect.beatmap_dir+SongSelect.dir[index]);
+		if(Application.isEditor){
+		PlayerPrefs.SetString("beatmap",Application.dataPath+"/"+SongSelect.dir[index]);
+		}
+		else{
+			PlayerPrefs.SetString("beatmap",SongSelect.dir[index]);
+		}
+		//Find the absolute url from a relative url 7-25-2021:7:59PM
 			music.clip = await LoadClip(PlayerPrefs.GetString("beatmap")+"/song.wav");
 			Play();
+			
 	}
 	
 	public void CheckForBeatmaps(){
