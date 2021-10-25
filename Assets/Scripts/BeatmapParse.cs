@@ -38,7 +38,8 @@ public class BeatmapParse : MonoBehaviour
 	public float SuperTargetHeadsUp=1f;
 	public bool WarningFlicker;
 	public GameObject Bullet;
-
+	public GameObject gun;
+   
 
 	
 	 async Task<AudioClip> LoadClip(string path){
@@ -88,7 +89,14 @@ IEnumerator Launch(GameObject g,float x,float y,float delay)
 {
 	yield return new WaitForSeconds(delay);
 	Debug.Log("Launching projectile now!");
-	Instantiate(g, new Vector3(x,y,200f), Quaternion.identity);
+	GameObject obj = Instantiate(g, new Vector3(x,y,200f), Quaternion.identity);
+	if(g.name == "missle(clone)"){
+		g.AddComponent<Target>();
+	}
+	else {
+	 g.AddComponent<SuperTarget>();	
+	}
+	
 	
 }
 
@@ -99,7 +107,7 @@ IEnumerator Launch(GameObject g,float x,float y,float delay)
     {
 		
 		active_song = PlayerPrefs.GetString("beatmap")+"/song.wav";
-	    if(!File.Exists(active_song)){
+	    if(!System.IO.File.Exists(active_song)){
 			active_song = "";
 			SceneManager.LoadScene("Menu");	
 		}
@@ -113,17 +121,18 @@ IEnumerator Launch(GameObject g,float x,float y,float delay)
 	
 	
       beatmap = PlayerPrefs.GetString("beatmap")+"/beatmap.xml";
+	  Debug.Log("Loading Beatmap: "+beatmap);
       XmlDocument xml = new XmlDocument();
       xml.PreserveWhitespace= true;
         xml.Load(beatmap);
 		XmlNodeList targets;
 		XmlNodeList supertargets;
-		 XmlNode doc =   xml.DocumentElement;  
-      targets = doc.SelectNodes("file/targets/t");
-	  supertargets = doc.SelectNodes("file/targets/s");
+		Debug.Log(xml.DocumentElement.ToString());
+		 XmlNode doc = xml.DocumentElement;  
+      targets = xml.GetElementsByTagName("t");
+	  supertargets = xml.GetElementsByTagName("s");
 		foreach(XmlNode target in targets){
 			string text = target.InnerText;
-			Debug.Log(text);
 			string[] str = text.Split(',');
 			float[] numbers={float.Parse(str[0]),float.Parse(str[1]),float.Parse(str[2])};
 			tgt_list.Add(numbers);
@@ -161,6 +170,10 @@ IEnumerator Launch(GameObject g,float x,float y,float delay)
 		if(Input.GetButtonDown("Fire1")){
 			Debug.Log("Fired sir");
 			GameObject g = Instantiate(Bullet);
+			g.transform.position = Bullet.transform.position;
+			g.transform.rotation = gun.transform.rotation;
+			g.AddComponent<Bullet>();
+		
 			sfx.clip = shot;
 			sfx.Play();
 		}

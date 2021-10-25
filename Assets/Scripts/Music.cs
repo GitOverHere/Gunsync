@@ -16,6 +16,7 @@ using Random = System.Random;
 using System.Web;
 
 
+
 public class Music : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -135,8 +136,11 @@ async Task<AudioClip> LoadClip(string path){
 			PlayerPrefs.SetString("beatmap",SongSelect.dir[index]);
 		}
 		//Find the absolute url from a relative url 7-25-2021:7:59PM
+		
 			music.clip = await LoadClip(PlayerPrefs.GetString("beatmap")+"/song.wav");
+			if(SceneManager.GetActiveScene().name !="Editor"){
 			Play();
+			}
 			
 	}
 	
@@ -147,7 +151,11 @@ async Task<AudioClip> LoadClip(string path){
 	
    async void Start()
     {
+		if(SceneManager.GetActiveScene().name !="Editor"){
         Load();
+		}
+		
+		
     }
 
     // Update is called once per frame

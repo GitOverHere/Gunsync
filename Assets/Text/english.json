@@ -1,0 +1,44 @@
+{
+	"SettingsStrings": {
+	 "Log In": "Login in right here"
+	 "Volume" : "Adjust volume here",
+     "Brightness" : "Adjust brightness here",
+     "Sensitivity": "Adjust sensitivity here"
+     	 
+	},
+	
+	"TutorialHeaderStrings": {
+		"0" : "Welcome"
+		"1" : "Page 1",
+		"2" : "Page 2",
+		"3" : "Page 3",
+		"4" : "Page 4",
+		"5" : "Page 6",
+		"6" : "Page 7"
+	},
+	
+	"TutorialStrings": {
+		"1" : "You have already selected and imported a song. So now you must add targets to it. Go To Edit > Add Target to add a Target and Edit > Add SuperTarget to add a supertarget.",
+		"2" : "Excellent job! You now see a red cricle showing a target. Now try zooming out. Press {KeyBinds.ZoomIn} to Zoom IN and {KeyBinds.ZoomOut} to Zoom OUT",
+		"3" : "Great work! Notice how your timstamp intervals automatically update when you zoom in or out."
+		"4" : "But what if we wanted to jump to a specific time? To do this Press {Keybinds.Jump} or go to Control > Jump To.",
+		"5" : "Excellent! Now select the time you want to jump to.",
+		"6" : "Brilliant! Now what if we don't like a note and want to remove it. Press {Keybinds.Remove} to remove an item or go to Edit > Remove Item"
+	},
+	
+	"TutorialEnd": {
+		"0": "You have successfully finished the tutorial. You may now create a beatmap. But be careful, the admins are very selective about what beatmaps they allow on the platform. If you want to view the tutorial again. Select Help > Restart Tutorial.",
+		"1": "Seriously? It's just a tutorial!. It may look simple, but the admins are very selective about the maps they pick. If you want to view the tutorial again. Select Help > Restart Tutorial.
+		
+		
+		
+	},
+	
+	
+	"TutorialEndHeader": {
+		"0": "Tutorial Finished!",
+		"1": "Are you kidding me?"
+		
+	}
+
+}

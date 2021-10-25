@@ -12,6 +12,13 @@ public class StringManager : MonoBehaviour
     // Start is called before the first frame update
 	public GameObject tooltip;
 	public string tooltip_s;
+	public static List<string> TutorialHeaderStrings;
+	public static List<string> TutorialStrings;
+	public static List<string> SettingsStrings;
+	public static List<string> TutorialEnd;
+	public static List<string> TutorialEndHeader;
+	
+	public TextAsset english,espanol,portugese,hindi,odia,arabic,chinese,japanese,korean;
 	
 	
 	public void UpdateLanguage(){
@@ -19,29 +26,61 @@ public class StringManager : MonoBehaviour
 		
 	}
 	
+	
+	
+	
+	
 	public void Open(){
-		/*switch(PlayerPrefs.GetString("language")){
+		switch(PlayerPrefs.GetString("language")){
 			case "english":
 			
 			
 			break;
 			
+			case "espanol":
+			
+			break;
+			
+			case "hindi":
+			
+			break;
+			
+			case "odia":
+			
+			break;
+			
+			case "arabic":
+			
+			break;
+			
+			case "chinese":
+			
+			break;
+			
+			case "japanese":
 			
 			
+			break;
 			
 			
+			case "korean":
 			
+			break;
+			
+			default:
+			
+			break;
 			
 		}
-		*/
+		
 		
 	}
 	
     void Start()
     {
-        /*if(!PlayerPrefs.HasKey("language")){
-			
-		}*/
+        if(!PlayerPrefs.HasKey("language")){
+		  PlayerPrefs.SetString("language","english");	
+		}
 		
 		
     }
